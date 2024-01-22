@@ -1,16 +1,15 @@
-FROM oven/bun
+FROM node
 
 WORKDIR /app
 
 COPY package.json /app/package.json
-COPY bun.lockb /app/bun.lock
 
-RUN bun install
+RUN npm install
 
 COPY . /app
 
-RUN bun run build
+RUN npm run build
 
 EXPOSE 3000
 
-CMD ["bun", "./build/index.js"]
+CMD ["node", "./build/index.js"]
